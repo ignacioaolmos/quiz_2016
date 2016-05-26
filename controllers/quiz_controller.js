@@ -89,7 +89,9 @@ exports.index = function(req, res, next) {
         options.offset = pagination.offset;
         options.limit  = pagination.limit;
 
-        return models.Quiz.findAll(options);
+        var aux = (req.query.search !== undefined)? req.query.search : "";
+   
+        return models.Quiz.findAll({where: {question: {$like: "%"+aux+"%"}}});
     })
 	.then(function(quizzes) {
 
