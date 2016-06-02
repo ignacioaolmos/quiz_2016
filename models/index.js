@@ -66,18 +66,5 @@ exports.Attachment = Attachment; // exportar definición de tabla Attachments
 
 
 // sequelize.sync() crea e inicializa tabla de preguntas en DB
-sequelize.sync()
-  .then(function() {
-    // Ya se han creado las tablas necesarias.
-    return Quiz.count()
-      .then(function (c) {
-           if (c === 0) { // la tabla se inicializa solo si está vacía
-           return Quiz.create({ question: 'Capital de Italia',
-                                       answer: 'Roma'  })
-              .then(function() {
-                      console.log('Base de datos inicializada con datos');
-              });
-        }
-});
-})
+
 
